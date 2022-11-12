@@ -11,7 +11,7 @@ const NotFoundPage = () => {
           }}>
             <h1>404</h1>
             <h3 style={{marginBottom:"30px"}}>Oops! Page not found</h3>
-            <Link href="/">Go to Home </Link>
+            <Link href="/goit-react-hw-08-phonebook">Go to Home </Link>
         </Container>
     )
 }
