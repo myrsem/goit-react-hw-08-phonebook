@@ -1,12 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { useSelector } from 'react-redux';
-import { getToken } from 'redux/authSlice';
+import { getToken, getIsFetching } from 'redux/authSlice';
 import HomePage from 'pages/HomePage';
 import Navigation from 'components/Navigation/Navigation';
 import PrivateRoute from './Routes/PrivateRoute';
 import PublicRoute from './Routes/PublicRoute';
 import { useGetCurrentUserQuery } from 'redux/authAPI';
+import { Loader } from 'components/Loader/Loader';
 
 const Contacts = lazy(() => import('pages/ContactsPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
@@ -15,14 +16,14 @@ const NotFoundPage = lazy(() => import('pages/PageNotFound'));
 
 const App = () => {
   const token = useSelector(getToken);
-  const isFetchingCurrentUser = useSelector(state => state.auth.isFetchingCurrentUser);
-  console.log(isFetchingCurrentUser)
+  const isFetching = useSelector(getIsFetching);
   useGetCurrentUserQuery(null, { skip: !token });
   return (
     
     <>
-    {!isFetchingCurrentUser &&
-      <Navigation />
+    <Navigation />
+    {isFetching &&
+      <Loader />
     }
       <Suspense fallback={<p style={{ textAlign: 'center' }}>Loading...</p>}>
         <Routes>

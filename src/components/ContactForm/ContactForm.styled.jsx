@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   border-radius: 10px;
-  width: 605px;
-  padding: 15px;
+  width: 600px;
+  padding: 30px;
   margin: 10px 0 10px 0;
   background-color: #88B9D5;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -26,7 +26,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  width: 600px;
+  width: 500px;
   height: 30px;
   font-size: 16px;
   padding-left: 5px;

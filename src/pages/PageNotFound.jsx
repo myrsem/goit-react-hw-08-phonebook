@@ -10,10 +10,8 @@ const NotFoundPage = () => {
             fontSize: "18px",
           }}>
             <h1>404</h1>
-            <h3>Oops! Page not found</h3>
-            <p style={{marginTop:"30px"}}>
-              <Link href="/">Go to Home </Link>
-            </p>
+            <h3 style={{marginBottom:"30px"}}>Oops! Page not found</h3>
+            <Link href="/">Go to Home </Link>
         </Container>
     )
 }

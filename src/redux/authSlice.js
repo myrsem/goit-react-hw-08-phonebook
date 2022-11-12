@@ -30,12 +30,11 @@ export const authSlice = createSlice({
     );
     builder.addMatcher(
       authApi.endpoints.logoutUser.matchFulfilled,
-      (state, _) => {
+      (state) => {
         state.token = null;
         state.user.name = null;
         state.user.email = null;
         state.isLoggedIn = false;
-        state.isFetchingCurrentUser = true;
       }
     );
     builder.addMatcher(
@@ -52,9 +51,16 @@ export const authSlice = createSlice({
         state.isFetchingCurrentUser = false;
       }
     );
+    builder.addMatcher(
+      authApi.endpoints.getCurrentUser.matchRejected,
+      (state) => {
+        state.isFetchingCurrentUser = false;
+      }
+    );
   },
 });
 
 export const getIsLoggedIn = state => state.auth.isLoggedIn;
 export const getUserName = state => state.auth.user.name;
 export const getToken = state => state.auth.token;
+export const getIsFetching = state => state.auth.isFetchingCurrentUser;

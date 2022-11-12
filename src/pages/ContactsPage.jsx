@@ -16,7 +16,6 @@ const Contacts = () => {
           <ContactFilter />
         </>
       )}
-      {isLoading && <p>Loading...</p>}
       {contacts?.length === 0 && !isLoading && <p>Contact list is empty</p>}
       <ContactList />
     </Phonebook>
